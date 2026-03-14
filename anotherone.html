@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Marianne Portfolio</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+scroll-behavior:smooth;
+}
+
+/* BACKGROUND GRADIENT */
+
+body{
+background: linear-gradient(-45deg,#ff6ec4,#7873f5,#4facfe,#43e97b,#ff6ec4);
+background-size: 400% 400%;
+animation: gradientMove 15s ease infinite;
+color:white;
+transition:0.5s;
+}
+
+body.dark{
+background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000000);
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* STAR CANVAS */
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:15px;
+text-align:center;
+z-index:10;
+}
+
+nav a, nav button{
+margin:5px;
+padding:10px 16px;
+border:none;
+border-radius:8px;
+background:#00f2fe;
+cursor:pointer;
+text-decoration:none;
+color:black;
+}
+
+/* SECTIONS */
+
+section{
+min-height:100vh;
+padding:120px 20px;
+text-align:center;
+}
+
+/* HOME HERO */
+
+.hero{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.hero-sub{
+font-size:20px;
+opacity:0.8;
+}
+
+/* PROFILE */
+
+.profile{
+width:170px;
+height:170px;
+border-radius:50%;
+border:4px solid white;
+object-fit:cover;
+margin-bottom:20px;
+box-shadow:0 0 25px white;
+}
+
+/* PROJECTS */
+
+.projects{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.project{
+width:220px;
+padding:10px;
+border-radius:12px;
+background:rgba(255,255,255,0.2);
+cursor:pointer;
+transition:0.3s;
+}
+
+.project:hover{
+transform:scale(1.1) rotateY(10deg);
+}
+
+.project img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+/* DESIGN GALLERY */
+
+.gallery img{
+width:180px;
+margin:10px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.15);
+box-shadow:0 0 20px cyan;
+}
+
+/* CURSOR */
+
+.cursor{
+position:fixed;
+width:18px;
+height:18px;
+background:cyan;
+border-radius:50%;
+pointer-events:none;
+filter:blur(8px);
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:white;
+color:black;
+padding:30px;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#designs">Designs</a>
+<a href="#contact">Contact</a>
+<button onclick="toggleMusic()">Music</button>
+<button onclick="toggleDark()">Dark Mode</button>
+</nav>
+
+<!-- HOME -->
+
+<section id="home">
+<h1 class="hero">Welcome to My Website</h1>
+<p class="hero-sub">Portfolio by Marianne</p>
+<p>Scroll down to explore my projects, designs, and more.</p>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<img src="mar1.jpg" class="profile">
+<h2>About Me</h2>
+<p>I enjoy video games, creative designing, sports, and musicals.</p>
+<p>I am 14 years old</p>
+<p>I am currenlty studying in RTPM-DSHS as a grade 8 pupil</p>
+<p>Born and raised in the municipality of Amlan</p>
+<p>I have 1 sibling</p>
+<p>I have alot of hidden talents I have yet to discover!</p>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+<h2>My Projects</h2>
+<div class="projects">
+
+<div class="project" onclick="openProject('School Broadcast','A school news reporting project.')">
+<img src="Screenshot 2026-03-14 155029.png">
+<h3>School News</h3>
+</div>
+
+<div class="project" onclick="openProject('Website Creation','Created a website for my final project in Creative Technology.')">
+<img src="Screenshot 2026-03-14 154755.png">
+<h3>Portfolio</h3>
+</div>
+
+<div class="project" onclick="openProject('School promotional video','Made a promotional video for my project in 1st quarter.')">
+<img src="school.jpg">
+<h3>School Promotion</h3>
+</div>
+
+</div>
+</section>
+
+<!-- DESIGNS -->
+
+<section id="designs">
+<h2>My Designs</h2>
+<div class="gallery">
+<img src="1.png" onclick="viewImage(this)">
+<img src="selya.png" onclick="viewImage(this)">
+<img src="1. Ang pinakamahalagang natutunan ko ay ang pagiging maingat, seryoso, maunawain sa mga sitwasyon at paging matuto sa aral. 2. Nakaapekto ito sa buhay ng tao dahil, ang pisikal na karamdaman ay ma (1).png" onclick="viewImage(this)">
+<img src="Your paragraph text.png" onclick="viewImage(this)">
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<h2>Contact</h2>
+<p>You can find me at:</p>
+<p>Fb: Marianne Christine</p>
+<p>Tiktok: @aiyaaatoo</p>
+<p>Insta: @theoriginalpepintheshort</p>
+<p>Discord: @akhmedsukarno_25132</p>
+<button onclick="hello()">Say wasup</button>
+</section>
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+<div class="modal-content">
+<h2 id="projectTitle"></h2>
+<p id="projectDesc"></p>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="mus_mtgameshow.ogg" type="audio/mpeg">
+</audio>
+
+<script>
+/* DARK MODE */
+function toggleDark(){ document.body.classList.toggle("dark") }
+
+/* CONTACT */
+function hello(){ alert("Thanks for visiting my website!") }
+
+/* PROJECT MODAL */
+function openProject(title,desc){
+document.getElementById("projectTitle").innerText=title
+document.getElementById("projectDesc").innerText=desc
+document.getElementById("modal").style.display="flex"
+}
+function closeModal(){ document.getElementById("modal").style.display="none" }
+
+/* IMAGE VIEW */
+function viewImage(img){ window.open(img.src) }
+
+/* MUSIC */
+let music=document.getElementById("music")
+function toggleMusic(){ music.paused ? music.play() : music.pause() }
+
+/* CURSOR */
+const cursor=document.getElementById("cursor")
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+})
+
+/* STAR PARTICLES */
+const canvas=document.getElementById("stars")
+const ctx=canvas.getContext("2d")
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+let stars=[]
+for(let i=0;i<120;i++){ stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2}) }
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+stars.forEach(s=>{
+ctx.beginPath()
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2)
+ctx.fillStyle="white"
+ctx.fill()
+})
+requestAnimationFrame(drawStars)
+}
+drawStars()
+</script>
+
+</body>
+</html>
