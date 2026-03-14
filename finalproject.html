@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Marianne's Portfolio</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+/* ANIMATED BACKGROUND */
+body{
+background:linear-gradient(-45deg,#fe4fea,#fe5900,#6a11cb,#2575fc);
+background-size:400% 400%;
+animation:bgmove 12s infinite;
+overflow-x:hidden;
+color:white;
+}
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* PARTICLES */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:100;
+}
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+nav a:hover{
+color:#fe0000;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:90px 20px;
+color:white;
+}
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+border:5px solid white;
+object-fit:cover;
+box-shadow:0 0 25px white;
+margin-bottom:20px;
+}
+
+/* GLASS CARDS */
+section{
+margin:40px auto;
+padding:35px;
+width:85%;
+border-radius:20px;
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(15px);
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* PROJECTS */
+.projects{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+.project{
+padding:20px;
+width:230px;
+border-radius:15px;
+background:rgba(255,255,255,0.25);
+cursor:pointer;
+transition:0.3s;
+position:relative;
+}
+.project:hover{
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+.project-details{
+display:none;
+margin-top:10px;
+font-size:14px;
+line-height:1.4;
+color:#fff;
+}
+
+/* GALLERY */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+.gallery img{
+width:190px;
+margin:12px;
+border-radius:12px;
+transition:0.3s;
+}
+.gallery img:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px rgb(255, 72, 0);
+}
+
+/* BUTTON */
+button{
+padding:12px 20px;
+border:none;
+background:#00f2fe;
+color:black;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+button:hover{
+background:white;
+}
+
+/* TYPING */
+#typing{
+font-size:26px;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* DARK MODE */
+.dark{
+background:#111;
+}
+.dark section{
+background:rgba(34,34,34,0.8);
+color:white;
+}
+.dark .project{
+background:rgba(50,50,50,0.6);
+color:white;
+}
+footer{
+text-align:center;
+padding:20px;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#designs">Designs</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="darkMode()">Dark</a>
+</nav>
+
+<div class="hero">
+
+<img src="mar1.jpg" class="profile">
+<h1 id="typing"></h1>
+<p>Welcome to my portfolio!</p>
+
+</div>
+
+<section id="about">
+<h2>About Me</h2>
+<p>Hello! I'm Marianne. I enjoy technology, video games, creative design, sports, and journalism.</p>
+<p>I'm currenlty 14 years of age</p>
+<p>Born and raised in the municipality of Amlan!</p>
+<p>I'm currently studying at RTPM-DSHS! as a grade 8 pupil</p>
+<p>I have multiple hidden talents I am about to discover!</p>
+</section>
+
+<section id="projects">
+<h2>My Projects</h2>
+
+<div class="projects">
+
+<div class="project" onclick="toggleDetails(this)">
+<h3>A school promotional video!</h3>
+<div class="project-details">
+<p>Produced a school promotional video as a group in the first quarter of the school year.</p>
+</div>
+</div>
+
+<div class="project" onclick="toggleDetails(this)">
+<h3>Website creation</h3>
+<div class="project-details">
+<p>Created a website for my final project in Creative Technology 8.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="designs">
+<h2>My Designs</h2>
+<div class="gallery">
+<img src="1.png">
+<img src="2.png">
+<img src="selya.png">
+<img src="principles of design.png">
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>You can find me in:</p>
+<P>Fb: Marianne Christine</P>
+<P>Tiktok: aiyaaatoo</P>
+<P>Insta: theoriginalpepintheshort</P>
+<p>Discord: akhmedsukarno_25132</p>
+<button onclick="hello()">say wasup!</button>
+</section>
+
+<footer>
+<p>© 2026 Marianne's Portfolio</p>
+</footer>
+
+<script>
+
+/* HELLO BUTTON */
+function hello(){
+alert("Thanks for visiting my website!");
+}
+
+/* DARK MODE */
+function darkMode(){
+document.body.classList.toggle("dark");
+}
+
+/* TYPING ANIMATION */
+const text="Hi! I'm Marianne";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,80);
+}
+}
+typing();
+
+/* PARTICLES */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3+1,
+dx:Math.random()*1-0.5,
+dy:Math.random()*1-0.5
+});
+}
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+p.x+=p.dx; p.y+=p.dy;
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+/* INTERACTIVE PROJECTS */
+function toggleDetails(card){
+const details=card.querySelector(".project-details");
+if(details.style.display==="block"){
+details.style.display="none";
+}else{
+details.style.display="block";
+}
+}
+
+</script>
+
+</body>
+</html>
